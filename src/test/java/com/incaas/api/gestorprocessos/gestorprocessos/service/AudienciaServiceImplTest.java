@@ -42,7 +42,7 @@ class AudienciaServiceImplTest {
         processo.setVara("Vara1");
 
         AudienciaDTO dto = new AudienciaDTO();
-        dto.setDataHora(LocalDateTime.of(2024, 6, 10, 10, 0)); // Segunda-feira
+        dto.setDataHora(LocalDateTime.parse("2024-06-10T10:00:00"));
         dto.setLocal("Sala 1");
 
         when(processoRepository.findById(idProcesso)).thenReturn(Optional.of(processo));
@@ -62,7 +62,7 @@ class AudienciaServiceImplTest {
     void deveLancarExcecaoQuandoProcessoNaoEncontrado() {
         Long idProcesso = 1L;
         AudienciaDTO dto = new AudienciaDTO();
-        dto.setDataHora(LocalDateTime.of(2024, 6, 10, 10, 0));
+        dto.setDataHora(LocalDateTime.parse("2024-06-10T10:00:00"));
         dto.setLocal("Sala 1");
 
         when(processoRepository.findById(idProcesso)).thenReturn(Optional.empty());
@@ -81,7 +81,7 @@ class AudienciaServiceImplTest {
         processo.setVara("Vara1");
 
         AudienciaDTO dto = new AudienciaDTO();
-        dto.setDataHora(LocalDateTime.of(2024, 6, 10, 10, 0));
+        dto.setDataHora(LocalDateTime.parse("2024-06-10T10:00:00"));
         dto.setLocal("Sala 1");
 
         when(processoRepository.findById(idProcesso)).thenReturn(Optional.of(processo));
@@ -100,7 +100,7 @@ class AudienciaServiceImplTest {
         processo.setVara("Vara1");
 
         AudienciaDTO dto = new AudienciaDTO();
-        dto.setDataHora(LocalDateTime.of(2024, 6, 9, 10, 0)); // Domingo
+        dto.setDataHora(LocalDateTime.parse("2024-06-09T10:00:00"));
         dto.setLocal("Sala 1");
 
         when(processoRepository.findById(idProcesso)).thenReturn(Optional.of(processo));
@@ -119,7 +119,7 @@ class AudienciaServiceImplTest {
         processo.setVara("Vara1");
 
         AudienciaDTO dto = new AudienciaDTO();
-        dto.setDataHora(LocalDateTime.of(2024, 6, 10, 10, 0));
+        dto.setDataHora(LocalDateTime.parse("2024-06-10T10:00:00"));
         dto.setLocal("Sala 1");
 
         when(processoRepository.findById(idProcesso)).thenReturn(Optional.of(processo));
