@@ -35,11 +35,12 @@ public class ProcessoJudicialController {
     }
 
     @GetMapping()
-    public ResponseEntity<List<ProcessoJudicial>> listar(@RequestParam(required = false) StatusEnum status, 
+    public ResponseEntity<List<ProcessoJudicial>> listar(@RequestParam(required = false) String status, 
                                                          @RequestParam(required = false) String comarca) {
+        
         List<ProcessoJudicial> processos = processoJudicialService.listarProcessos(status, comarca);
         if (processos.isEmpty()) {
-            return ResponseEntity.ok().build();
+            return ResponseEntity.ok().body(List.of());
         }
         return ResponseEntity.ok(processos);
     }

@@ -9,5 +9,5 @@ import com.incaas.api.gestorprocessos.dto.ProcessoJudicialDTO;
 
 public interface ProcessoJudicialService {
     public ProcessoJudicial cadastrarProcesso(ProcessoJudicialDTO processoJudicialDTO);
-    public List<ProcessoJudicial> listarProcessos(StatusEnum status, String comarca);
+    public List<ProcessoJudicial> listarProcessos(String status, String comarca);
 }

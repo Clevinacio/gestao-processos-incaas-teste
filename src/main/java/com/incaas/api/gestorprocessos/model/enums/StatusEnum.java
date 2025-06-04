@@ -5,11 +5,8 @@ public enum StatusEnum {
     ARQUIVADO("Arquivado"),
     SUSPENSO("Suspenso");
 
+    @SuppressWarnings("unused")
     private String status;
-
-    public String getStatus() {
-        return status;
-    }
 
     StatusEnum(String status) {
         this.status = status;

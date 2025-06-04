@@ -37,11 +37,19 @@ public class ProcessoJudicialServiceImpl implements ProcessoJudicialService {
     }
     
     @Override
-    public List<ProcessoJudicial> listarProcessos(StatusEnum status, String comarca) {
-        if (status != null && comarca != null) {
-            return processoJudicialRepository.findByStatusAndComarca(status, comarca);
-        } else if (status != null) {
-            return processoJudicialRepository.findByStatus(status);
+    public List<ProcessoJudicial> listarProcessos(String status, String comarca) {
+        StatusEnum statusEnum = null;
+        if (status != null) {
+            try {
+                statusEnum = StatusEnum.valueOf(status.toUpperCase());
+            } catch (IllegalArgumentException e) {
+                throw new BusinessException("Status inválido: " + status);
+            }
+        }
+        if (statusEnum != null && comarca != null) {
+            return processoJudicialRepository.findByStatusAndComarca(statusEnum, comarca);
+        } else if (statusEnum != null) {
+            return processoJudicialRepository.findByStatus(statusEnum);
         } else if (comarca != null) {
             return processoJudicialRepository.findByComarca(comarca);
         } else {
