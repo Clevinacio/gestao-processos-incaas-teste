@@ -4,6 +4,7 @@ import org.modelmapper.ModelMapper;
 
 import com.incaas.api.gestorprocessos.model.ProcessoJudicial;
 import com.incaas.api.getorprocessos.dto.ProcessoJudicialDTO;
+import com.incaas.api.getorprocessos.exception.BusinessException;
 import com.incaas.api.getorprocessos.repository.ProcessoJudicialRepository;
 
 public class ProcessoJudicialServiceImpl implements ProcessoJudicialService {
@@ -19,7 +20,7 @@ public class ProcessoJudicialServiceImpl implements ProcessoJudicialService {
     @Override
     public ProcessoJudicial cadastrarProcesso(ProcessoJudicialDTO processoJudicialDTO) {
         if(processoJaExiste(processoJudicialDTO.getNumeroProcesso())) {
-            throw new IllegalArgumentException("Processo com número " + processoJudicialDTO.getNumeroProcesso() + " já existe.");
+            throw new BusinessException("Processo com número " + processoJudicialDTO.getNumeroProcesso() + " já existe.");
         }
 
         ProcessoJudicial processoJudicial = modelMapper.map(processoJudicialDTO, ProcessoJudicial.class);
