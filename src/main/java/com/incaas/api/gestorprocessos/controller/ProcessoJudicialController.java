@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 
 @RestController
-@RequestMapping("api/v1/processos")
+@RequestMapping("${api.base-path:/api}/${api.version:v1}/processos")
 public class ProcessoJudicialController {
     private final ProcessoJudicialService processoJudicialService;
 

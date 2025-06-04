@@ -22,7 +22,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 
 @RestController
-@RequestMapping("api/v1/processos/audiencias")
+@RequestMapping("${api.base-path:/api}/${api.version:v1}/audiencias")
 public class AudienciaController {
     private final AudienciaService audienciaService;
 
