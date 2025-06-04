@@ -1,4 +1,4 @@
-package com.incaas.api.getorprocessos.exception;
+package com.incaas.api.gestorprocessos.exception;
 
 import java.time.LocalDateTime;
 

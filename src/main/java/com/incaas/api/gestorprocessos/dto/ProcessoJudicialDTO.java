@@ -1,6 +1,6 @@
-package com.incaas.api.getorprocessos.dto;
+package com.incaas.api.gestorprocessos.dto;
 
-import com.incaas.api.getorprocessos.validation.NumeroProcessoValido;
+import com.incaas.api.gestorprocessos.validation.NumeroProcessoValido;
 
 import jakarta.validation.constraints.NotBlank;
 import lombok.Getter;

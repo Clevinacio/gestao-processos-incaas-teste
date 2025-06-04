@@ -1,4 +1,4 @@
-package com.incaas.api.getorprocessos;
+package com.incaas.api.gestorprocessos;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

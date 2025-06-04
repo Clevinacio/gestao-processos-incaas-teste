@@ -1,12 +1,14 @@
-package com.incaas.api.getorprocessos.service;
+package com.incaas.api.gestorprocessos.service;
 
 import org.modelmapper.ModelMapper;
+import org.springframework.stereotype.Service;
 
 import com.incaas.api.gestorprocessos.model.ProcessoJudicial;
-import com.incaas.api.getorprocessos.dto.ProcessoJudicialDTO;
-import com.incaas.api.getorprocessos.exception.BusinessException;
-import com.incaas.api.getorprocessos.repository.ProcessoJudicialRepository;
+import com.incaas.api.gestorprocessos.dto.ProcessoJudicialDTO;
+import com.incaas.api.gestorprocessos.exception.BusinessException;
+import com.incaas.api.gestorprocessos.repository.ProcessoJudicialRepository;
 
+@Service
 public class ProcessoJudicialServiceImpl implements ProcessoJudicialService {
 
     private final ProcessoJudicialRepository processoJudicialRepository;

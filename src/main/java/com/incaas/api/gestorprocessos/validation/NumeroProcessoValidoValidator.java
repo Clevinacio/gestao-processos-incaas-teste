@@ -1,4 +1,4 @@
-package com.incaas.api.getorprocessos.validation;
+package com.incaas.api.gestorprocessos.validation;
 
 import jakarta.validation.ConstraintValidator;
 

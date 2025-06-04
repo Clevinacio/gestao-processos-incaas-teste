@@ -8,8 +8,8 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
-import com.incaas.api.getorprocessos.repository.ProcessoJudicialRepository;
-import com.incaas.api.getorprocessos.service.ProcessoJudicialServiceImpl;
+import com.incaas.api.gestorprocessos.repository.ProcessoJudicialRepository;
+import com.incaas.api.gestorprocessos.service.ProcessoJudicialServiceImpl;
 
 class ProcessoJudicialServiceImplTest {
     @InjectMocks

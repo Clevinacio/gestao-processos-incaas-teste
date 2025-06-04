@@ -1,8 +1,8 @@
-package com.incaas.api.getorprocessos.controller;
+package com.incaas.api.gestorprocessos.controller;
 
 import com.incaas.api.gestorprocessos.model.ProcessoJudicial;
-import com.incaas.api.getorprocessos.dto.ProcessoJudicialDTO;
-import com.incaas.api.getorprocessos.service.ProcessoJudicialService;
+import com.incaas.api.gestorprocessos.dto.ProcessoJudicialDTO;
+import com.incaas.api.gestorprocessos.service.ProcessoJudicialService;
 
 import jakarta.validation.Valid;
 

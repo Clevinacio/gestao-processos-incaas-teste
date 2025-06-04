@@ -1,4 +1,4 @@
-package com.incaas.api.getorprocessos.exception;
+package com.incaas.api.gestorprocessos.exception;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

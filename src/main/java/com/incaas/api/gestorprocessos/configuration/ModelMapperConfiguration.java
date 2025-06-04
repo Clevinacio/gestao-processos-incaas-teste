@@ -1,4 +1,4 @@
-package com.incaas.api.getorprocessos.configuration;
+package com.incaas.api.gestorprocessos.configuration;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.context.annotation.Bean;
