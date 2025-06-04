@@ -9,10 +9,16 @@ import com.incaas.api.gestorprocessos.service.AudienciaService;
 
 import jakarta.validation.Valid;
 
+import java.util.List;
+
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
 
 
 @RestController
@@ -29,4 +35,17 @@ public class AudienciaController {
         Audiencia audiencia = audienciaService.cadastrarAudiencia(idProcesso, audenciaDTO);
         return ResponseEntity.ok(audiencia);
     }
+
+    @GetMapping("/buscar")
+    public ResponseEntity<List<Audiencia>> buscarAudienciasPorDataEComarca(
+            @RequestParam(required = false) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) String data,
+            @RequestParam(required = false) String comarca) {
+        List<Audiencia> audiencias = audienciaService.buscarAudienciasPorDataEComarca(data, comarca);
+        if (audiencias.isEmpty()) {
+            return ResponseEntity.ok().body(List.of());
+        }
+        return ResponseEntity.ok(audiencias);
+        
+    }
+    
 }

@@ -1,8 +1,6 @@
 package com.incaas.api.gestorprocessos.model;
 
 import java.time.LocalDateTime;
-import java.util.Optional;
-
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.incaas.api.gestorprocessos.model.enums.EnumTipoAudiencia;
 

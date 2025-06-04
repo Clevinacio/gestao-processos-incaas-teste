@@ -1,5 +1,6 @@
 package com.incaas.api.gestorprocessos.service;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -66,6 +67,13 @@ public class AudienciaServiceImpl implements AudienciaService {
 
     private boolean processoArquivadoSuspenso(ProcessoJudicial processo) {
         return processo.getStatus().equals(EnumStatus.ARQUIVADO) || processo.getStatus().equals(EnumStatus.SUSPENSO);
+    }
+
+    @Override
+    public List<Audiencia> buscarAudienciasPorDataEComarca(String data, String comarca) {
+        LocalDateTime inicio = LocalDate.parse(data).atStartOfDay();
+        LocalDateTime fim = inicio.plusDays(1);
+        return audienciaRepository.findByComarcaAndDia(inicio, fim, comarca);
     }
 
 }
