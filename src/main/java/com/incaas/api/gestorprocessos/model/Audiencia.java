@@ -2,6 +2,8 @@ package com.incaas.api.gestorprocessos.model;
 
 import java.time.LocalDateTime;
 
+import com.incaas.api.gestorprocessos.model.enums.EnumTipoAudiencia;
+
 import lombok.Data;
 import lombok.NoArgsConstructor;
 

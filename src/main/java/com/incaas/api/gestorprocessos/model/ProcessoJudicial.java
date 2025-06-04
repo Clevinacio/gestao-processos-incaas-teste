@@ -1,5 +1,7 @@
 package com.incaas.api.gestorprocessos.model;
 
+import com.incaas.api.gestorprocessos.model.enums.StatusEnum;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
