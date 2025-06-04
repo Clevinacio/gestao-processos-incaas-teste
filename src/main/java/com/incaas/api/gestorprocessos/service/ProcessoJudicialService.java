@@ -1,7 +1,6 @@
 package com.incaas.api.gestorprocessos.service;
 
 import com.incaas.api.gestorprocessos.model.ProcessoJudicial;
-import com.incaas.api.gestorprocessos.model.enums.StatusEnum;
 
 import java.util.List;
 

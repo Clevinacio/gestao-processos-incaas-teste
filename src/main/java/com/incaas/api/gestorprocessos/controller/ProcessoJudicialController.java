@@ -1,7 +1,6 @@
 package com.incaas.api.gestorprocessos.controller;
 
 import com.incaas.api.gestorprocessos.model.ProcessoJudicial;
-import com.incaas.api.gestorprocessos.model.enums.StatusEnum;
 import com.incaas.api.gestorprocessos.dto.ProcessoJudicialDTO;
 import com.incaas.api.gestorprocessos.service.ProcessoJudicialService;
 

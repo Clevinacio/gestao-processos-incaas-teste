@@ -19,7 +19,7 @@ import org.modelmapper.ModelMapper;
 
 import com.incaas.api.gestorprocessos.dto.ProcessoJudicialDTO;
 import com.incaas.api.gestorprocessos.model.ProcessoJudicial;
-import com.incaas.api.gestorprocessos.model.enums.StatusEnum;
+import com.incaas.api.gestorprocessos.model.enums.EnumStatus;
 import com.incaas.api.gestorprocessos.repository.ProcessoJudicialRepository;
 import com.incaas.api.gestorprocessos.service.ProcessoJudicialServiceImpl;
 
@@ -53,11 +53,11 @@ class ProcessoJudicialServiceImplTest {
         ProcessoJudicialDTO processoJudicialDTO = new ProcessoJudicialDTO();
         processoJudicialDTO.setNumeroProcesso("12345");
         
-        when(processoJudicialRepository.findByNumeroProcesso("12345")).thenReturn(true);
+        when(processoJudicialRepository.findByNumeroProcesso("12345")).thenReturn(new ProcessoJudicial());
         try {
             processoJudicialService.cadastrarProcesso(processoJudicialDTO);
         } catch (Exception e) {
-            assertTrue(e.getMessage().contains("já existe"), "Deve lançar exceção se o processo já existir.");
+            assertTrue(e.getMessage().contains("Processo com número 12345 já existe"), "Deve lançar exceção se o número do processo já existir.");
         }
     }
 
@@ -73,7 +73,7 @@ class ProcessoJudicialServiceImplTest {
     void deveRetornarProcessosPorStatusEComarca() {
         String status = "ATIVO";
         String comarca = "Comarca A";
-        when(processoJudicialRepository.findByStatusAndComarca(StatusEnum.ATIVO, "Comarca A")).thenReturn(List.of(new ProcessoJudicial()));
+        when(processoJudicialRepository.findByStatusAndComarca(EnumStatus.ATIVO, "Comarca A")).thenReturn(List.of(new ProcessoJudicial()));
         List<ProcessoJudicial> processos = processoJudicialService.listarProcessos(status, comarca);
         assertNotNull(processos, "A lista de processos não deve ser nula.");
         assertTrue(!processos.isEmpty(), "A lista de processos deve conter pelo menos um processo.");
@@ -82,7 +82,7 @@ class ProcessoJudicialServiceImplTest {
     @Test
     void deveRetornarProcessosPorStatus() {
         String status = "ATIVO";
-        when(processoJudicialRepository.findByStatus(StatusEnum.ATIVO)).thenReturn(List.of(new ProcessoJudicial()));
+        when(processoJudicialRepository.findByStatus(EnumStatus.ATIVO)).thenReturn(List.of(new ProcessoJudicial()));
         List<ProcessoJudicial> processos = processoJudicialService.listarProcessos(status, null);
         assertNotNull(processos, "A lista de processos não deve ser nula.");
         assertTrue(!processos.isEmpty(), "A lista de processos deve conter pelo menos um processo.");

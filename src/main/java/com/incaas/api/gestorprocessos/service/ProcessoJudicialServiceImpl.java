@@ -6,7 +6,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
 import com.incaas.api.gestorprocessos.model.ProcessoJudicial;
-import com.incaas.api.gestorprocessos.model.enums.StatusEnum;
+import com.incaas.api.gestorprocessos.model.enums.EnumStatus;
 import com.incaas.api.gestorprocessos.dto.ProcessoJudicialDTO;
 import com.incaas.api.gestorprocessos.exception.BusinessException;
 import com.incaas.api.gestorprocessos.repository.ProcessoJudicialRepository;
@@ -38,10 +38,10 @@ public class ProcessoJudicialServiceImpl implements ProcessoJudicialService {
     
     @Override
     public List<ProcessoJudicial> listarProcessos(String status, String comarca) {
-        StatusEnum statusEnum = null;
+        EnumStatus statusEnum = null;
         if (status != null) {
             try {
-                statusEnum = StatusEnum.valueOf(status.toUpperCase());
+                statusEnum = EnumStatus.valueOf(status.toUpperCase());
             } catch (IllegalArgumentException e) {
                 throw new BusinessException("Status inválido: " + status);
             }

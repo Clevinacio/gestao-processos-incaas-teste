@@ -1,8 +1,10 @@
 package com.incaas.api.gestorprocessos.dto;
 
+import com.incaas.api.gestorprocessos.model.enums.EnumStatus;
 import com.incaas.api.gestorprocessos.validation.NumeroProcessoValido;
 
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -25,7 +27,7 @@ public class ProcessoJudicialDTO {
     @NotBlank
     private String assunto;
 
-    @NotBlank
-    private String status;
+    @NotNull
+    private EnumStatus status;
 
 }

@@ -11,6 +11,6 @@ import com.incaas.api.gestorprocessos.model.Audiencia;
 
 @Repository
 public interface AudienciaRepository extends JpaRepository<Audiencia, Long> {
-    @Query("SELECT a FROM Audiencia a WHERE a.dataHora = :dataHora AND a.vara = :vara AND a.local = :local")
-    public List<Audiencia> findByProcessoAndLocal(LocalDateTime dataHora, String vara, String local);
+    @Query("SELECT a FROM Audiencia a WHERE a.dataHora = :dataHora AND a.processo.vara = :vara AND a.local = :local")
+    List<Audiencia> findByProcessoAndLocal(LocalDateTime dataHora, String vara, String local);
 }

@@ -2,7 +2,7 @@ package com.incaas.api.gestorprocessos.model;
 
 import java.util.List;
 
-import com.incaas.api.gestorprocessos.model.enums.StatusEnum;
+import com.incaas.api.gestorprocessos.model.enums.EnumStatus;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
@@ -40,7 +40,7 @@ public class ProcessoJudicial {
 
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
-    private StatusEnum status;
+    private EnumStatus status;
 
     @OneToMany(mappedBy = "processo", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Audiencia> audiencias;
