@@ -48,15 +48,4 @@ public class ProcessoJudicialServiceImpl implements ProcessoJudicialService {
             return processoJudicialRepository.findAll();
         }
     }
-
-    @Override
-    public ProcessoJudicial buscarProcessoPorId(Long id) {
-        throw new UnsupportedOperationException("Unimplemented method 'buscarProcessoPorId'");
-    }
-
-    @Override
-    public ProcessoJudicial atualizarProcesso(Long id, ProcessoJudicialDTO processoJudicialDTO) {
-        throw new UnsupportedOperationException("Unimplemented method 'atualizarProcesso'");
-    }
-
 }
