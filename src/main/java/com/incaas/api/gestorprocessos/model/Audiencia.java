@@ -10,6 +10,7 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 public class Audiencia {
+    private Long id;
     private LocalDateTime dataHora;
     private String local;
     private EnumTipoAudiencia tipoAudiencia;

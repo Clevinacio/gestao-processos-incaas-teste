@@ -10,6 +10,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class ProcessoJudicial {
+    private Long id;
     private String numeroProcesso;
     private String vara;
     private String comarca;
