@@ -21,4 +21,7 @@ public class ProcessoJudicialDTO {
     @NotBlank
     private String assunto;
 
+    @NotBlank
+    private String status;
+
 }
