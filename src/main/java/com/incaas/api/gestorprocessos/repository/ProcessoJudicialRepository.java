@@ -10,7 +10,7 @@ import com.incaas.api.gestorprocessos.model.enums.StatusEnum;
 
 @Repository
 public interface ProcessoJudicialRepository extends JpaRepository<ProcessoJudicial, Long> {
-    Object findByNumeroProcesso(String numeroProcesso);
+    ProcessoJudicial findByNumeroProcesso(String numeroProcesso);
     List<ProcessoJudicial> findByStatusAndComarca(StatusEnum status, String comarca);
     List<ProcessoJudicial> findByStatus(StatusEnum status);
     List<ProcessoJudicial> findByComarca(String comarca);
