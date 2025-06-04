@@ -1,9 +1,12 @@
 package com.incaas.api.gestorprocessos.service;
 
+import java.util.List;
+
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
 import com.incaas.api.gestorprocessos.model.ProcessoJudicial;
+import com.incaas.api.gestorprocessos.model.enums.StatusEnum;
 import com.incaas.api.gestorprocessos.dto.ProcessoJudicialDTO;
 import com.incaas.api.gestorprocessos.exception.BusinessException;
 import com.incaas.api.gestorprocessos.repository.ProcessoJudicialRepository;
@@ -31,6 +34,19 @@ public class ProcessoJudicialServiceImpl implements ProcessoJudicialService {
 
     private boolean processoJaExiste(String numeroProcesso) {
         return processoJudicialRepository.findByNumeroProcesso(numeroProcesso) != null;
+    }
+    
+    @Override
+    public List<ProcessoJudicial> listarProcessos(StatusEnum status, String comarca) {
+        if (status != null && comarca != null) {
+            return processoJudicialRepository.findByStatusAndComarca(status, comarca);
+        } else if (status != null) {
+            return processoJudicialRepository.findByStatus(status);
+        } else if (comarca != null) {
+            return processoJudicialRepository.findByComarca(comarca);
+        } else {
+            return processoJudicialRepository.findAll();
+        }
     }
 
     @Override
