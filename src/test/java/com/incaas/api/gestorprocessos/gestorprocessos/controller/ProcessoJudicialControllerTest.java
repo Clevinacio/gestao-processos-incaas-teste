@@ -61,7 +61,7 @@ class ProcessoJudicialControllerTest {
                 .andExpect(jsonPath("$.vara").value("1ª Vara"))
                 .andExpect(jsonPath("$.comarca").value("São Paulo"))
                 .andExpect(jsonPath("$.assunto").value("Teste"))
-                .andExpect(jsonPath("$.status").value("ATIVO"));
+                .andExpect(jsonPath("$.status").value(EnumStatus.ATIVO.getStatus()));
     }
 
     @ParameterizedTest
@@ -136,7 +136,7 @@ class ProcessoJudicialControllerTest {
                 .andExpect(jsonPath("$[0].vara").value("1ª Vara"))
                 .andExpect(jsonPath("$[0].comarca").value("São Paulo"))
                 .andExpect(jsonPath("$[0].assunto").value("Teste"))
-                .andExpect(jsonPath("$[0].status").value("ATIVO"));
+                .andExpect(jsonPath("$[0].status").value(EnumStatus.ATIVO.getStatus()));
         
         verify(processoJudicialService, times(1)).listarProcessos(null, null);
     }
