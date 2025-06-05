@@ -51,7 +51,8 @@ public class AudienciaController {
     }
 
     @Operation(summary = "Listar audiências agendadas",
-            description = "Retorna uma lista de audiências agendadas, podendo filtrar por data e comarca.")
+            description = "Retorna uma lista de audiências agendadas, podendo filtrar por data e comarca. "+
+                          "Se nenhum filtro for fornecido, retorna todas as audiências agendadas para o dia da busca.")
     @ApiResponses(value = {
         @ApiResponse(responseCode = "200", description = "Lista de audiências retornada com sucesso")
     })

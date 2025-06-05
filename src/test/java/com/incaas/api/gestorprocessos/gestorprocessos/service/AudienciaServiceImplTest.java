@@ -16,6 +16,9 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.ArgumentMatchers.eq;
+import static org.mockito.ArgumentMatchers.isNull;
 import static org.mockito.Mockito.*;
 
 class AudienciaServiceImplTest {
@@ -132,18 +135,54 @@ class AudienciaServiceImplTest {
     }
 
     @Test
-    void deveBuscarAudienciasPorDataEComarca() {
+    void deveBuscarTodasAudienciasQuandoParametrosNulosOuVazios() {
+        when(audienciaRepository.findAll()).thenReturn(List.of(new Audiencia()));
+
+        List<Audiencia> result = audienciaService.buscarAudienciasPorDataEComarca(null, null);
+        assertEquals(1, result.size());
+        verify(audienciaRepository).findAll();
+
+        result = audienciaService.buscarAudienciasPorDataEComarca("", "");
+        assertEquals(1, result.size());
+        verify(audienciaRepository, times(2)).findAll();
+    }
+
+    @Test
+    void deveBuscarAudienciasPorComarcaQuandoApenasComarcaInformada() {
+        String comarca = "Comarca1";
+        when(audienciaRepository.findByComarca(comarca)).thenReturn(List.of(new Audiencia()));
+
+        List<Audiencia> result = audienciaService.buscarAudienciasPorDataEComarca(null, comarca);
+        assertEquals(1, result.size());
+        verify(audienciaRepository).findByComarca(comarca);
+
+        result = audienciaService.buscarAudienciasPorDataEComarca("", comarca);
+        assertEquals(1, result.size());
+        verify(audienciaRepository, times(2)).findByComarca(comarca);
+    }
+
+    @Test
+    void deveBuscarAudienciasPorDiaQuandoApenasDataInformada() {
+        String data = "2024-06-10";
+        when(audienciaRepository.findByDia(any(LocalDateTime.class), any(LocalDateTime.class), isNull()))
+                .thenReturn(List.of(new Audiencia()));
+
+        List<Audiencia> result = audienciaService.buscarAudienciasPorDataEComarca(data, null);
+        assertEquals(1, result.size());
+        verify(audienciaRepository).findByDia(any(LocalDateTime.class), any(LocalDateTime.class), isNull());
+    }
+
+    @Test
+    void deveBuscarAudienciasPorComarcaEDiaQuandoAmbosInformados() {
         String data = "2024-06-10";
         String comarca = "Comarca1";
-        List<Audiencia> audiencias = List.of(new Audiencia());
-
-        when(audienciaRepository.findByComarcaAndDia(
-                any(LocalDateTime.class), any(LocalDateTime.class), eq(comarca)))
-                .thenReturn(audiencias);
+        when(audienciaRepository.findByComarcaAndDia(any(LocalDateTime.class), any(LocalDateTime.class), eq(comarca)))
+                .thenReturn(List.of(new Audiencia()));
 
         List<Audiencia> result = audienciaService.buscarAudienciasPorDataEComarca(data, comarca);
-
         assertEquals(1, result.size());
-        verify(audienciaRepository).findByComarcaAndDia(any(LocalDateTime.class), any(LocalDateTime.class), eq(comarca));
+        verify(audienciaRepository, atLeastOnce()).findByComarcaAndDia(any(LocalDateTime.class), any(LocalDateTime.class), eq(comarca));
     }
+
+
 }

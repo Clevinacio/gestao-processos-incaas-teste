@@ -15,4 +15,10 @@ public interface AudienciaRepository extends JpaRepository<Audiencia, Long> {
 
     @Query("SELECT a FROM Audiencia a WHERE a.processo.comarca = :comarca AND a.dataHora >= :inicio AND a.dataHora < :fim")
     List<Audiencia> findByComarcaAndDia(LocalDateTime inicio, LocalDateTime fim, String comarca);
+
+    @Query("SELECT a FROM Audiencia a WHERE a.processo.comarca = :comarca")
+    List<Audiencia> findByComarca(String comarca);
+
+    @Query("SELECT a FROM Audiencia a WHERE a.dataHora >= :inicio AND a.dataHora < :fim")
+    List<Audiencia> findByDia(LocalDateTime inicio, LocalDateTime fim, String comarca);
 }

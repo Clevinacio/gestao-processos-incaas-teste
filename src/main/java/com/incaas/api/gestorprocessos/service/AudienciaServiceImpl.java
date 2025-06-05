@@ -71,9 +71,23 @@ public class AudienciaServiceImpl implements AudienciaService {
 
     @Override
     public List<Audiencia> buscarAudienciasPorDataEComarca(String data, String comarca) {
-        LocalDateTime inicio = LocalDate.parse(data).atStartOfDay();
-        LocalDateTime fim = inicio.plusDays(1);
-        return audienciaRepository.findByComarcaAndDia(inicio, fim, comarca);
+        LocalDateTime inicio = null;
+        LocalDateTime fim = null;
+        if ((data == null || data.isEmpty()) && (comarca == null || comarca.isEmpty())) {
+            return audienciaRepository.findAll();
+        }
+        if ((data == null || data.isEmpty()) && (comarca != null)) {
+            return audienciaRepository.findByComarca(comarca);
+        }
+        if(data != null && !data.isEmpty() && comarca == null) {
+            inicio = LocalDate.parse(data).atStartOfDay();
+            fim = inicio.plusDays(1);
+            return audienciaRepository.findByDia(inicio, inicio.plusDays(1), comarca);
+        } else{
+            inicio = LocalDate.parse(data).atStartOfDay();
+            fim = inicio.plusDays(1);
+            return audienciaRepository.findByComarcaAndDia(inicio, fim, comarca);
+        }
     }
 
 }
