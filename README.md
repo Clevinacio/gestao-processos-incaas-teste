@@ -97,3 +97,37 @@ Bearer <seu_token_secreto>
 ```
 
 Exemplo de Token: Se você configurou `app.auth.token=meu_token_secreto`, então o token a ser usado é `meu_token_secreto`.
+
+# Testes e Cobertura de Código
+
+## Rodando os Testes
+
+Para executar todos os testes unitários e de integração do projeto, utilize o comando Maven:
+
+```bash
+mvn test
+```
+
+## Gerando Relatório de Cobertura de Código (JaCoCo)
+
+Para gerar o relatório de cobertura de código (Code Coverage) com JaCoCo, execute o comando Maven:
+
+```bash
+mvn clean verify
+```
+
+Este comando irá compilar o projeto, executar os testes e, em seguida, gerar o relatório de cobertura.
+
+## Visualizando os Relatórios
+
+- **Relatório de Testes (Surefire)**: Após a execução dos testes, os relatórios JUnit estarão disponíveis em:
+  ```
+  target/surefire-report.html
+  ```
+
+- **Relatório de Cobertura de Código (JaCoCo)**: Após a execução do comando `mvn clean verify`, o relatório de cobertura HTML estará disponível em:
+  ```
+  target/site/jacoco/index.html
+  ```
+
+Basta abrir esses arquivos em seu navegador para visualizar os resultados detalhados dos testes e da cobertura.

@@ -46,7 +46,7 @@ class AudienciaControllerTest {
 
         Mockito.when(audienciaService.cadastrarAudiencia(eq(idProcesso), any(AudienciaDTO.class))).thenReturn(audiencia);
 
-        mockMvc.perform(post("/api/v1/processos/audiencias/{idProcesso}/agendar", idProcesso)
+        mockMvc.perform(post("/api/v1/audiencias/{idProcesso}/agendar", idProcesso)
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(objectMapper.writeValueAsString(audienciaDTO)))
                 .andExpect(status().isOk())
@@ -62,7 +62,7 @@ class AudienciaControllerTest {
 
         Mockito.when(audienciaService.buscarAudienciasPorDataEComarca(data, comarca)).thenReturn(audiencias);
 
-        mockMvc.perform(get("/api/v1/processos/audiencias/buscar")
+        mockMvc.perform(get("/api/v1/audiencias/buscar")
                 .param("data", data)
                 .param("comarca", comarca))
                 .andExpect(status().isOk())
@@ -76,7 +76,7 @@ class AudienciaControllerTest {
 
         Mockito.when(audienciaService.buscarAudienciasPorDataEComarca(data, comarca)).thenReturn(Collections.emptyList());
 
-        mockMvc.perform(get("/api/v1/processos/audiencias/buscar")
+        mockMvc.perform(get("/api/v1/audiencias/buscar")
                 .param("data", data)
                 .param("comarca", comarca))
                 .andExpect(status().isOk())
@@ -88,14 +88,14 @@ class AudienciaControllerTest {
     void deveRealizarBuscaDeAudienciasSemParametros() throws Exception {
         Mockito.when(audienciaService.buscarAudienciasPorDataEComarca(null, null)).thenReturn(Collections.emptyList());
 
-        mockMvc.perform(get("/api/v1/processos/audiencias/buscar"))
+        mockMvc.perform(get("/api/v1/audiencias/buscar"))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$").isArray());
     }
 
     @Test
     void deveRetornarBadRequestQuandoBodyInvalido() throws Exception {
-        mockMvc.perform(post("/api/v1/processos/audiencias/1/agendar")
+        mockMvc.perform(post("/api/v1/audiencias/1/agendar")
                 .contentType(MediaType.APPLICATION_JSON)
                 .content("{}"))
                 .andExpect(status().isBadRequest());
