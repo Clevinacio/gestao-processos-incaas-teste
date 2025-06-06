@@ -41,8 +41,8 @@ Certifique-se de ter as seguintes ferramentas instaladas:
 ### 1. Clonar o Repositório
 
 ```bash
-git clone https://github.com/seu-usuario/nome-do-seu-repositorio.git
-cd nome-do-seu-repositorio
+git clone [https://github.com/seu-usuario/nome-do-seu-repositorio.git](https://github.com/Clevinacio/gestao-processos-incaas-teste)
+cd gestao-processos-incaas-teste
 ```
 
 ### 2. Compilar o Projeto
